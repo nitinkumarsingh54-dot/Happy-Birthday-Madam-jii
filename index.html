@@ -213,7 +213,18 @@ setTimeout(()=>c.remove(),3000);
 }
 alert("I Love You Madam ji ❤️");
 }
-</script>
+<script>
+function unlock(){
+  let input = document.getElementById("pass").value;
 
+  if(input === "1328"){   // 🔐 YAHI PASSWORD HAI
+    document.getElementById("lock").style.display="none";
+    document.getElementById("main").style.display="block";
+    document.getElementById("music").play();
+  } else {
+    alert("Wrong password 😝");
+  }
+}
+</script>
 </body>
 </html>
