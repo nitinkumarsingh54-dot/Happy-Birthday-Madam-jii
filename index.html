@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Madam ji ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:sans-serif;
+background:black;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* INTRO */
+#intro{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:black;
+flex-direction:column;
+z-index:10;
+}
+
+/* LOCK */
+#lock{
+display:none;
+flex-direction:column;
+}
+
+/* SLIDES */
+.slide{
+position:fixed;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:fade 15s infinite;
+z-index:-1;
+}
+
+.slide:nth-child(1){background:url('https://images.unsplash.com/photo-1517841905240-472988babdf9')}
+.slide:nth-child(2){background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')}
+.slide:nth-child(3){background:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470')}
+
+@keyframes fade{
+0%{opacity:0}
+10%{opacity:1}
+30%{opacity:1}
+40%{opacity:0}
+100%{opacity:0}
+}
+
+/* CONTENT */
+#main{display:none;margin-top:20%}
+
+.typing{
+border-right:2px solid white;
+display:inline-block;
+white-space:nowrap;
+overflow:hidden;
+}
+
+/* STORY */
+#story{display:none;padding:20px}
+
+/* BUTTON */
+button{
+padding:10px 20px;
+border:none;
+background:pink;
+border-radius:20px;
+cursor:pointer;
+margin-top:10px;
+}
+
+/* HEARTS */
+.heart{
+position:fixed;
+color:pink;
+animation:float 5s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-10vh)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+<h1>Something Special For You ❤️</h1>
+<button onclick="showLock()">Enter</button>
+</div>
+
+<!-- LOCK -->
+<div id="intro" class="lock" style="display:none">
+<h2>Enter Password 😏</h2>
+<input id="pass" type="password">
+<button onclick="unlock()">Unlock</button>
+</div>
+
+<!-- SLIDES -->
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+
+<!-- MAIN -->
+<div id="main">
+<h1>Happy Birthday Madam ji ❤️</h1>
+<p id="typing"></p>
+<h3 id="countdown"></h3>
+<button onclick="openStory()">Our Story 💌</button>
+<button onclick="surprise()">Final Surprise 🎁</button>
+
+<div id="story">
+<p>
+Hum Instagram pe mile the Anshu ke through…  
+Aur pehli baar school me dekha toh dil wahi reh gaya ❤️  
+
+Class ke wo moments… aur 21 March 2025 ki first call…  
+sab aaj bhi yaad hai mujhe.
+
+Aapka gussa, care, possessiveness, smile…  
+sab kuch perfect hai.
+
+Pondu ji 😄 bas aapke saath life spend karni hai…  
+I love you Madam ji 💖
+</p>
+</div>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
+
+<script>
+
+/* INTRO -> LOCK */
+function showLock(){
+document.getElementById("intro").style.display="none";
+document.querySelector(".lock").style.display="flex";
+}
+
+/* UNLOCK */
+function unlock(){
+if(document.getElementById("pass").value==="pondu"){
+document.querySelector(".lock").style.display="none";
+document.getElementById("main").style.display="block";
+document.getElementById("music").play();
+typing();
+} else alert("Wrong 😝");
+}
+
+/* TYPING */
+let txt="Aap meri life ka sabse special hissa ho ❤️";
+let i=0;
+function typing(){
+if(i<txt.length){
+document.getElementById("typing").innerHTML+=txt[i];
+i++;
+setTimeout(typing,50);
+}
+}
+
+/* COUNTDOWN */
+let date=new Date("May 1, 2026 00:00:00").getTime();
+setInterval(()=>{
+let now=new Date().getTime();
+let d=date-now;
+let h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((d%(1000*60*60))/(1000*60));
+let s=Math.floor((d%(1000*60))/1000);
+document.getElementById("countdown").innerHTML=h+"h "+m+"m "+s+"s left 🎉";
+},1000);
+
+/* STORY */
+function openStory(){
+document.getElementById("story").style.display="block";
+}
+
+/* HEARTS */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"%";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),5000);
+},400);
+
+/* CONFETTI */
+function surprise(){
+for(let i=0;i<50;i++){
+let c=document.createElement("div");
+c.innerHTML="🎉";
+c.style.position="fixed";
+c.style.left=Math.random()*100+"%";
+c.style.top="0";
+c.style.fontSize="20px";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+}
+alert("I Love You Madam ji ❤️");
+}
+</script>
+
+</body>
+</html>
