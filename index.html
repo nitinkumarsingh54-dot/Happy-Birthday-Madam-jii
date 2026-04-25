@@ -32,6 +32,13 @@ z-index:10;
 #lock{
 display:none;
 flex-direction:column;
+justify-content:center;
+align-items:center;
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+z-index:10;
 }
 
 /* SLIDES */
@@ -44,6 +51,7 @@ background-position:center;
 opacity:0;
 animation:fade 15s infinite;
 z-index:-1;
+pointer-events:none;
 }
 
 .slide:nth-child(1){background:url('file_00000000277c7206be10fd7621a0c711.jpg')}
@@ -103,7 +111,7 @@ animation:float 5s linear infinite;
 </div>
 
 <!-- LOCK -->
-<div id="intro" class="lock" style="display:none">
+<div id="lock">
 <h2>Enter Password 😏</h2>
 <input id="pass" type="password">
 <button onclick="unlock()">Unlock</button>
@@ -149,13 +157,13 @@ I love you Madam ji 💖
 /* INTRO -> LOCK */
 function showLock(){
 document.getElementById("intro").style.display="none";
-document.querySelector(".lock").style.display="flex";
+document.getElementById("lock").style.display="flex";
 }
 
 /* UNLOCK */
 function unlock(){
-if(document.getElementById("pass").value==="pondu"){
-document.querySelector(".lock").style.display="none";
+if(document.getElementById("pass").value==="1328"){
+document.getElementById("lock").style.display="none";
 document.getElementById("main").style.display="block";
 document.getElementById("music").play();
 typing();
@@ -213,18 +221,8 @@ setTimeout(()=>c.remove(),3000);
 }
 alert("I Love You Madam ji ❤️");
 }
-<script>
-function unlock(){
-  let input = document.getElementById("pass").value;
 
-  if(input === "1328"){   // 🔐 YAHI PASSWORD HAI
-    document.getElementById("lock").style.display="none";
-    document.getElementById("main").style.display="block";
-    document.getElementById("music").play();
-  } else {
-    alert("Wrong password 😝");
-  }
-}
 </script>
+
 </body>
 </html>
