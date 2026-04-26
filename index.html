@@ -15,6 +15,11 @@ text-align:center;
 overflow:hidden;
 }
 
+/* RESPONSIVE TEXT */
+h1{font-size:clamp(22px,4vw,40px);}
+p{font-size:clamp(14px,2.5vw,18px);}
+h3{font-size:clamp(16px,3vw,24px);}
+
 /* INTRO */
 #intro{
 position:fixed;
@@ -50,8 +55,7 @@ background-size:cover;
 background-position:center;
 opacity:0;
 animation:fade 15s infinite;
-z-index:-1;
-pointer-events:none;
+z-index:-3;
 }
 
 .slide:nth-child(1){background:url('IMG_20250428_171549.jpg')}
@@ -66,18 +70,46 @@ pointer-events:none;
 100%{opacity:0}
 }
 
-/* CONTENT */
-#main{display:none;margin-top:20%}
-
-.typing{
-border-right:2px solid white;
-display:inline-block;
-white-space:nowrap;
-overflow:hidden;
+/* FLOATING GALLERY */
+#gallery{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:-2;
 }
 
-/* STORY */
-#story{display:none;padding:20px}
+#gallery img{
+position:absolute;
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 0 15px rgba(255,192,203,0.6);
+animation:floatGallery 14s linear infinite;
+opacity:0.8;
+}
+
+#gallery img:nth-child(1){left:10%;animation-delay:0s;}
+#gallery img:nth-child(2){left:45%;animation-delay:4s;}
+#gallery img:nth-child(3){left:75%;animation-delay:8s;}
+
+@keyframes floatGallery{
+0%{transform:translateY(100vh) scale(0.8);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-20vh) scale(1);opacity:0;}
+}
+
+@media(max-width:600px){
+#gallery img{width:80px;height:80px;}
+}
+
+/* MAIN */
+#main{
+display:none;
+padding:20px;
+margin-top:10vh;
+}
 
 /* BUTTON */
 button{
@@ -86,7 +118,7 @@ border:none;
 background:pink;
 border-radius:20px;
 cursor:pointer;
-margin-top:10px;
+margin:8px;
 }
 
 /* HEARTS */
@@ -94,11 +126,41 @@ margin-top:10px;
 position:fixed;
 color:pink;
 animation:float 5s linear infinite;
+z-index:5;
 }
+
 @keyframes float{
 0%{transform:translateY(100vh)}
 100%{transform:translateY(-10vh)}
 }
+
+/* FINAL SCREEN */
+#final{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999;
+}
+
+.glow{
+font-size:22px;
+color:pink;
+text-shadow:0 0 10px pink,0 0 20px hotpink;
+animation:pop 1s infinite alternate;
+}
+
+@keyframes pop{
+from{transform:scale(1)}
+to{transform:scale(1.05)}
+}
+
 </style>
 </head>
 
@@ -122,43 +184,35 @@ animation:float 5s linear infinite;
 <div class="slide"></div>
 <div class="slide"></div>
 
+<!-- FLOATING GALLERY -->
+<div id="gallery">
+  <img src="IMG_20250428_171549.jpg">
+  <img src="IMG_20250803_114658.jpg">
+  <img src="file_00000000277c7206be10fd7621a0c711.jpg">
+</div>
+
 <!-- MAIN -->
 <div id="main">
 <h1>Happy Birthday Madam ji ❤️</h1>
+
 <p id="typing"></p>
+
 <h3 id="countdown"></h3>
+
 <button onclick="openStory()">Our Story 💌</button>
 <button onclick="surprise()">Final Surprise 🎁</button>
 
 <div id="story">
 <p>
-Happy Birthday Madam ji ❤️
-
-Pata nahi kaise start karu, par bas itna kehna hai ki aap meri life ka sabse special hissa hain. Aapki smile, aapki baatein… sab kuch itna perfect lagta hai ki kabhi kabhi yakeen hi nahi hota ki aap meri ho.
-
-Aapke saath jo moments spend kiye hain, wo mere liye sabse precious hain, aur honestly main bas yahi chahta hoon ki aage bhi har birthday aapke saath celebrate karu.
-
-Aap sirf meri girlfriend nahi ho, aap meri happiness ho, meri peace ho, aur meri sabse badi strength ho.
-
-Aaj ke din bas ek wish hai — aap hamesha aise hi khush raho, smile karti raho… kyunki aapki smile hi meri duniya hai.
-
-I love you Madam ji 💖
-  
-  Waise toh bohot kuch kehna hota hai aapse, par aaj thoda special bolna hai…
-Yaad hai jab hum pehli baar mile the, Anshu ke through Instagram pe? Tab shayad itna nahi pata tha ki aap meri life ka itna important part ban jaoge. Aur jab maine aapko pehli baar school me dekha tha… sach bolu toh wahi pe flat ho gaya tha main.
-
-Class me aapke saath baithna, baatein karna, wo chhote chhote moments… sab aaj bhi utne hi special lagte hain. Aur hamari first call — 21st March 2025 — wo toh main kabhi bhool hi nahi sakta.
-
-Mujhe aapki har cheez pasand hai — aapke nakhre, aapka gussa, aapki care, wo thoda possessive hona, aur sabse zyada aapki smile. Aapka “strict” hona bhi achha lagta hai, especially jab baat meri aati hai 😌
-
-Aur haan pondu ji 😄 future me bas itna chahunga ki hum saath me grow karein, same college me BBA karein, aur life ke har phase me ek dusre ke saath rahein… baaki bache kitne honge wo aap decide kar lena 😘
-
-Sach me, aap meri life ka sabse khoobsurat hissa ho.
-
-  I LOVIEEE YOUUU INFINITE AND FOREVER MERII JAAN 🥰 😘
-  🥹.
+(Your story remains same ❤️)
 </p>
 </div>
+</div>
+
+<!-- FINAL SCREEN -->
+<div id="final">
+<h1 class="glow">I LOVIEEE YOUUU DEEPLY FROM MY HEART ❤️</h1>
+<h2 class="glow">HAPPY BIRTHDAY DARLING 🎉🫶🏻</h2>
 </div>
 
 <!-- MUSIC -->
@@ -168,7 +222,7 @@ Sach me, aap meri life ka sabse khoobsurat hissa ho.
 
 <script>
 
-/* INTRO -> LOCK */
+/* INTRO */
 function showLock(){
 document.getElementById("intro").style.display="none";
 document.getElementById("lock").style.display="flex";
@@ -196,14 +250,25 @@ setTimeout(typing,50);
 }
 
 /* COUNTDOWN */
-let date=new Date("("April 28, 2026 00:00:00")").getTime();
-setInterval(()=>{
+const target = new Date(2026, 3, 28, 0, 0, 0).getTime();
+
+let x=setInterval(()=>{
 let now=new Date().getTime();
-let d=date-now;
+let d=target-now;
+
+if(d<=0){
+clearInterval(x);
+triggerFinal();
+return;
+}
+
 let h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
 let m=Math.floor((d%(1000*60*60))/(1000*60));
 let s=Math.floor((d%(1000*60))/1000);
-document.getElementById("countdown").innerHTML=h+"h "+m+"m "+s+"s left 🎉";
+
+document.getElementById("countdown").innerHTML=
+h+"h "+m+"m "+s+"s left 🎉";
+
 },1000);
 
 /* STORY */
@@ -221,9 +286,9 @@ document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),5000);
 },400);
 
-/* CONFETTI */
+/* SURPRISE */
 function surprise(){
-for(let i=0;i<50;i++){
+for(let i=0;i<60;i++){
 let c=document.createElement("div");
 c.innerHTML="🎉";
 c.style.position="fixed";
@@ -233,7 +298,13 @@ c.style.fontSize="20px";
 document.body.appendChild(c);
 setTimeout(()=>c.remove(),3000);
 }
-alert("I Love You Madam ji ❤️");
+triggerFinal();
+}
+
+/* FINAL SCREEN */
+function triggerFinal(){
+document.getElementById("main").style.display="none";
+document.getElementById("final").style.display="flex";
 }
 
 </script>
