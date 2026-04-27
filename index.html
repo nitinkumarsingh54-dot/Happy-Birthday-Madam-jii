@@ -197,8 +197,6 @@ to{transform:scale(1.05)}
 
 <p id="typing"></p>
 
-<h3 id="countdown"></h3>
-
 <button onclick="openStory()">Our Story 💌</button>
 <button onclick="surprise()">Final Surprise 🎁</button>
 
@@ -216,14 +214,14 @@ Aaj ke din bas ek wish hai — aap hamesha aise hi khush raho, smile karti raho�
 
 I love you So Much Dil se 💖. MUWAHHHH 💋 
   
-  Waise toh bohot kuch kehna hota hai aapse, par aaj thoda special bolna hai…
+Waise toh bohot kuch kehna hota hai aapse, par aaj thoda special bolna hai…
 Yaad hai jab hum pehli baar mile the, Anshu ke through Instagram pe? Tab shayad itna nahi pata tha ki aap meri life ka itna important part ban jaoge. Aur jab maine aapko pehli baar school me dekha tha… sach bolu toh wahi pe flat ho gaya tha main.
 
 Class me aapke saath baithna, baatein karna, wo chhote chhote moments… sab aaj bhi utne hi special lagte hain. Aur hamari first call — 21st March 2025 — wo toh main kabhi bhool hi nahi sakta.
 
 Mujhe aapki har cheez pasand hai — aapke nakhre, aapka gussa, aapki care, wo thoda possessive hona, aur sabse zyada aapki smile. Aapka “strict” hona bhi achha lagta hai, especially jab baat meri aati hai 😌
 
-Aur haan pondu ji 😄 future me bas itna chahunga ki hum saath me grow karein, same college me BBA karein, aur life ke har phase me ek dusre ke saath rahein…  😄
+Aur haan pondu ji 😄 future me bas itna chahunga ki hum saath me grow karein, same college me BBA karein, aur life ke har phase me ek dusre ke saath rahein… 😄
 
 Sach me, aap meri life ka sabse khoobsurat hissa ho.♥️ 🥹
 </p>
@@ -269,28 +267,6 @@ i++;
 setTimeout(typing,50);
 }
 }
-
-/* COUNTDOWN */
-const target = new Date(April, 30 2026).getTime();
-
-let x=setInterval(()=>{
-let now=new Date().getTime();
-let d=target-now;
-
-if(d<=0){
-clearInterval(x);
-triggerFinal();
-return;
-}
-
-let h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-let m=Math.floor((d%(1000*60*60))/(1000*60));
-let s=Math.floor((d%(1000*60))/1000);
-
-document.getElementById("countdown").innerHTML=
-h+"h "+m+"m "+s+"s left 🎉";
-
-},1000);
 
 /* STORY */
 function openStory(){
